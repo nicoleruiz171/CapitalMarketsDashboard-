@@ -15,7 +15,6 @@ This project leverages various data sources, including Yahoo Finance for bond pr
 I used Jupyter Notebook to run this code interactively, and IPython widgets allow users to select bonds, input date ranges, and view updated visualizations.
 
 ## Optimizations:
-Refactored initial data processing scripts for improved efficiency, reducing runtime by 30% in some instances.
 Integrated AWS S3 functionality to store large datasets without overwhelming local storage.
 
 ## Lessons Learned:
