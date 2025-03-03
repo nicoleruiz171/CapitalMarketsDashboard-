@@ -1,26 +1,121 @@
-# Capital Markets Dashboard - Enhanced ETL & AWS Integration
-***This project is a dynamic capital markets dashboard that integrates Yahoo Finance and FRED API data, performs ETL (Extract, Transform, Load) processes, and visualizes bond price, returns, volatility, and yield data. It also includes AWS S3 integration to upload the processed data files for cloud storage.***
+# Capital Markets Dashboard - Enhanced ETL & AWS Integration  
+This project is a **dynamic capital markets dashboard** that integrates **Yahoo Finance and FRED API** data, performs **ETL (Extract, Transform, Load) processes**, and visualizes **bond prices, returns, volatility, and yield data**. It also features **AWS S3 integration** to store processed data for cloud accessibility.  
 
-## How It's Made:
-***Tech used:*** Python, Jupyter Notebook, Yahoo Finance API, FRED API, AWS S3, Matplotlib, Pandas, IPython widgets
+## 🚀 How It's Made
+### 🛠️ Technologies Used
+**• Programming Language**: Python  
+**• Libraries**: ```yfinance```, ```pandas```, ```matplotlib```, ```numpy```, ```requests```, ```boto3```, ```ipywidgets```  
+**• APIs**: Yahoo Finance, FRED API  
+**• Cloud Storage**: AWS S3  
+**• Development Environment**: Jupyter Notebook
 
-This project leverages various data sources, including Yahoo Finance for bond price data and the FRED API for historical yield data. The project follows a standard ETL pipeline:
+This project follows an **ETL pipeline**:  
+**1. Extract** – Fetches bond price data from **Yahoo Finance** and historical yield data from **FRED API**.  
+**2. Transform** – Cleans data, calculates **cumulative returns, volatility, and Sharpe ratio**.  
+**3. Load** – Stores results as **CSV files** and uploads them to **AWS S3** for cloud access.  
 
-***Extract:*** Data is pulled from Yahoo Finance and FRED API.
+Interactive **Jupyter Notebook widgets** allow users to select bonds, set a date range, and dynamically update data.
 
-***Transform:*** The data is cleaned, with calculations for cumulative returns, volatility, and Sharpe ratio.
+## 📊 Tickers and What They Represent
+This dashboard analyzes **three U.S. Treasury bond ETFs**, each representing different **maturity durations**:  
+| Ticker | ETF Name                            | Bond Type                            | Risk Level |
+| :---:  | :---:                               | :---:                                | :---:      |
+| SHY    | iShares 1-3 Year Treasury Bond ETF  | Short-term bonds (1-3 years)         |  Low       |
+| IEF    | iShares 7-10 Year Treasury Bond ETF | Intermediate-term bonds (7-10 years) |  Medium    |
+| TLT    | iShares 20+ Year Treasury Bond ETF  | Long-term bonds (20+ years)          |  High      |
 
-***Load:*** Data is visualized with Matplotlib and stored as CSV files, which are then uploaded to AWS S3.
+**Why does this matter?**  
+• Short-term bonds (**SHY**) are **less sensitive** to interest rate changes.  
+• Long-term bonds (**TLT**) **fluctuate more** but offer higher yield potential.  
+**• Investors choose bonds based on risk tolerance and market outlook**.  
 
-I used Jupyter Notebook to run this code interactively, and IPython widgets allow users to select bonds, input date ranges, and view updated visualizations.
+## 📈 Financial Metrics Calculated and Their Importance
+### 1️⃣ Volatility  
+**📌 What it measures**: The fluctuation in bond prices over time.  
+**📌 Why it matters**: Investors seeking stability prefer **low-volatility** assets.  
+### 2️⃣ Sharpe Ratio  
+**📌 What it measures**: **Risk-adjusted returns** (return per unit of risk).  
+**📌 Why it matters**: Higher Sharpe ratios indicate **better investment returns relative to risk**.  
+### 3️⃣ Cumulative Returns  
+**📌 What it measures**: **Total returns** on the investment over time.  
+**📌 Why it matters**: Investors can track performance and **compare bond investments**.  
+### 4️⃣ Historical Yield Data (FRED API)  
+**📌 What it measures**: U.S. Treasury yields over time for different maturities.  
+**📌 Why it matters**: Helps investors understand **interest rate trends** and their impact on bond prices.  
 
-## Optimizations:
-Integrated AWS S3 functionality to store large datasets without overwhelming local storage.
+## 💡 Real-Life Applications for Investors
+🔹 Compare different bond ETFs to assess **risk vs. return**.  
+🔹 Analyze **bond price reactions** to interest rate changes.  
+🔹 Identify **optimal entry and exit points** for bond investments.  
+🔹 Use the **Sharpe ratio** to compare bond investments with other asset classes.  
+🔹 Make **data-driven investment decisions** for portfolio diversification.  
 
-## Lessons Learned:
-Gained deeper understanding of ETL processes and how to integrate real-time financial data from APIs.
+## ⚡ How to Run the Code
+### 1️⃣ Prerequisites  
+Ensure you have the following installed:    
+**• Python 3.x**  
+**• Jupyter Notebook**  
+• Required Python libraries (install using the command below)  
+```bash
+pip install yfinance pandas matplotlib numpy boto3 requests ipywidgets
+```
+### 2️⃣ Clone the Repository
+```python
+git clone https://github.com/yourusername/capital-markets-dashboard.git  
+cd capital-markets-dashboard
+```
+### 3️⃣ Set Up API Keys  
+Before running the code, update your API credentials in the script:  
+```python
+FRED_API_KEY = 'YOUR_FRED_API_KEY' 
+AWS_ACCESS_KEY = 'YOUR_AWS_ACCESS_KEY'  
+AWS_SECRET_KEY = 'YOUR_AWS_SECRET_KEY'  
+S3_BUCKET = 'your-s3-bucket-name'
+```
 
-Gained hands-on experience with AWS S3 and managing cloud storage for large datasets.
+### 4️⃣ Run the Jupyter Notebook
+```bash
+jupyter notebook
+```
+Open the notebook file and **run all cells** to start the dashboard.
 
-Learned how to make my data analysis process interactive using Jupyter Notebook widgets, which significantly improved the user experience.
+### 5️⃣ Using the Dashboard  
+✅ Select a bond ETF (**SHY, IEF, TLT**) from the dropdown.  
+✅ Choose **a start and end date** for analysis.  
+✅ Click "**Update Data**" to fetch and process data.  
+✅ View **bond price, cumulative returns, and historical yield visualizations**.  
+
+## 📊 Expected Output  
+Below are sample outputs generated by the dashboard:  
+### **1️⃣ Bond Price Over Time**  
+The script fetches bond price data and visualizes it.  
+
+![Bond Price Chart](https://github.com/user-attachments/assets/1c84930d-af55-4698-919e-55c0d371141f)  
+
+### **2️⃣ Cumulative Returns Analysis**  
+Cumulative returns are calculated based on daily percentage changes.  
+
+![Cumulative Returns](https://github.com/user-attachments/assets/8e06b4a6-1ed2-4a10-9134-e19cec58d415)    
+
+### **3️⃣ Historical Yield Data**  
+Real bond yield data fetched from the **FRED API**.  
+
+![Historical Yield](https://github.com/user-attachments/assets/8b1a2f7c-24f5-4ebc-ad89-f6dd326ef79a)  
+
+### **4️⃣ Key Investment Metrics**  
+The script calculates:  
+✅ **Volatility** → Measures risk.    
+✅ **Sharpe Ratio** → Evaluates risk-adjusted returns.
+
+![Example Output](https://github.com/user-attachments/assets/a58b227a-4a99-4261-beb1-52bb90edea0e)
+
+## ⚙️ Optimizations  
+✔️ **AWS S3 integration** for **cloud storage of data files**.  
+✔️ **Enhanced error handling** for API failures and missing data.  
+
+## 🎯 Lessons Learned
+✅ Gained experience integrating **Yahoo Finance, FRED API, and AWS S3**.  
+✅ Improved knowledge of **ETL processes and data visualization**.  
+✅ Built an **interactive finance tool** using **Jupyter Notebook widgets**.  
+
 
